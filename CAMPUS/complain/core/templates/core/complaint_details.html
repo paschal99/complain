@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Complain detail page {% endblock %}
+
+{% block content %}
+    <a href="{% url 'accommodation-home' %}"><button>back</button></a>
+    <hr>
+    <h1>Complaint Detail</h1>
+    <p>Subject: {{ complaint.subject }}</p>
+    <p>Description: {{ complaint.description }}</p>
+    <p>Name: {{ complaint.student.first_name }}</p>
+    <p>Room: {{ complaint.student.room_name }}</p>
+    <p>Status: {{ complaint.status }}</p>
+    {% if complaint.status == 'Pending' %}
+    <form action="{% url 'forward_complaint' complaint.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Forward to Building Estate Department</button>
+    </form>
+    {% endif %}
+    {% if complaint.status == 'In Progress' %}
+    <form action="{% url 'resolve_complaint' complaint.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Resolve Complaint</button>
+    </form>
+    {% endif %}
+{% endblock %}

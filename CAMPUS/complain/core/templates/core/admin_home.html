@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Admin page {% endblock %}
+
+{% block content %}
+    <!-- <h1>Admin Dashboard</h1> -->
+    &nbsp; &nbsp;
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">logout</button>
+    </form>
+
+    <!-- <h1>Homepage</h1> -->
+        &nbsp; &nbsp;
+        <a href="{% url 'building-signup' %}"><button>Register building staff</button></a>
+        <a href="{% url 'accommodation-signup' %}"><button>Register accommodation staff</button></a>
+    <hr>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complaint Report</h1>
+    <table>
+        <tr>
+            <th>Title of Complaint</th>
+            <th>Staff Name</th>
+            <th>Location</th>
+            <th>Budget</th>
+            <th>Tool Name</th>
+            <th>Date Created</th>
+        </tr>
+        {% for complaint in complaints %}
+        <tr>
+            <td>{{ complaint.Title_complaint }}</td>
+            <td>{{ complaint.staff_name }}</td>
+            <td>{{ complaint.location }}</td>
+            <td>{{ complaint.budget }}</td>
+            <td>{{ complaint.toolname }}</td>
+            <td>{{ complaint.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

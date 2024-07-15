@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Complaint</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h2>Update Complaint</h2>
+    <hr>
+    <form method="post">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select class="form-control" id="status" name="status">
+          {% for choice in complaint.status_choices %}
+            <option value="{{ choice.0 }}" {% if choice.0 == complaint.status %}selected{% endif %}>{{ choice.1 }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="feedback">Feedback:</label>
+        <input type="text" class="form-control" id="feedback" name="feedback" value="{{ complaint.feedback }}">
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <select class="form-control" id="location" name="location">
+          {% for choice in complaint.location_choices %}
+            <option value="{{ choice.0 }}" {% if choice.0 == complaint.location %}selected{% endif %}>{{ choice.1 }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</body>
+</html>

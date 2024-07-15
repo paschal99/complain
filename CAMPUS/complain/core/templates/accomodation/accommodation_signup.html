@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Signup</title>
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <style>
+        body {
+            background-color:  #185058;
+            font-family: 'Nunito', sans-serif;
+            color: #000000;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgb(37, 36, 36);
+            background-color: #ffffff;
+            color: #070707;
+        }
+        .card-header {
+            border-radius: 15px 15px 0 0;
+            background-color: #58a0ff;
+        }
+        .card-header h1 {
+            margin: 0;
+            padding: 10px;
+            font-size: 24px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-body form input[type="submit"] {
+            background-color: #17a2b8;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #020202;
+            cursor: pointer;
+        }
+        .card-body form input[type="submit"]:hover {
+            background-color: #eb8a49;
+        }
+        .card-body a {
+            color: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+<div class="container col-md-4 offset-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h1>STAFF SIGNUP</h1>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'accommodation-signup' %}" method="POST">
+                {% csrf_token %}
+                {% load crispy_forms_tags %}
+                {{ form|crispy }}
+                <input type="submit" value="Signup" style=" background-color: #eb8a49;">
+            </form>
+            <p>Already registered? <a href="{% url 'login' %}">Sign in Now</a><br></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

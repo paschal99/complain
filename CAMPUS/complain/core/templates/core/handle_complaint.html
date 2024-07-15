@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Handle complain page {% endblock %}
+
+{% block content %}
+    <h1>Handle Complaint</h1>
+    <a href="{% url 'accommodation-home' complain.id %}"><button>back</button></a>
+    <hr>
+    <p>Complaint: {{ complaint.subject }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Feedback</button>
+    </form>
+{% endblock %}

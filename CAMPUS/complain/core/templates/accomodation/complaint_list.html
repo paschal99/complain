@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends 'accomodation/accommodation_home.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>Complaint List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Complaint List</h1>
+        <div class="table-responsive">
+            <table id="complaintTable" class="table table-bordered table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Title</th>
+                        <!-- <th>Staff Name</th> -->
+                        <th>Location</th>
+                        <th>Budget</th>
+                        <th>Tool Name</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for complaint in complaints %}
+                        <tr>
+                            <td>{{ complaint.Title_complaint }}</td>
+                            <!-- <td>{{ complaint.staff_name }}</td> -->
+                            <td>{{ complaint.location }}</td>
+                            <td>{{ complaint.budget }}</td>
+                            <td>{{ complaint.toolname }}</td>
+                            <td>{{ complaint.created_at|date:"Y-m-d H:i" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <!-- Initialize DataTable -->
+    <script>
+        $(document).ready(function() {
+            $('#complaintTable').DataTable();
+        });
+    </script>
+</body>
+</html>
+{% endblock %}
